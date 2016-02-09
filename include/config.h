@@ -15,47 +15,47 @@
 
 #define UNIX /* delete if no fork(), exec() available */
 
-/* #define MSDOS */ /* in case it's not auto-detected */
+ /* #define MSDOS */ /* in case it's not auto-detected */
 
-/* #define OS2 */ /* define for OS/2 */
+ /* #define OS2 */ /* define for OS/2 */
 
-/* #define TOS */ /* define for Atari ST/TT */
+ /* #define TOS */ /* define for Atari ST/TT */
 
-/* #define STUPID */ /* avoid some complicated expressions if
-                        your C compiler chokes on them */
-/* #define MINIMAL_TERM */
-/* if a terminal handles highlighting or tabs poorly,
-   try this define, used in pager.c and termcap.c */
-/* #define ULTRIX_CC20 */
-/* define only if using cc v2.0 on a DECstation */
-/* #define ULTRIX_PROTO */
-/* define for Ultrix 4.0 (or higher) on a DECstation;
- * if you get compiler errors, don't define this. */
-/* Hint: if you're not developing code, don't define
-   ULTRIX_PROTO. */
+ /* #define STUPID */ /* avoid some complicated expressions if
+                         your C compiler chokes on them */
+                         /* #define MINIMAL_TERM */
+                         /* if a terminal handles highlighting or tabs poorly,
+                            try this define, used in pager.c and termcap.c */
+                            /* #define ULTRIX_CC20 */
+                            /* define only if using cc v2.0 on a DECstation */
+                            /* #define ULTRIX_PROTO */
+                            /* define for Ultrix 4.0 (or higher) on a DECstation;
+                             * if you get compiler errors, don't define this. */
+                             /* Hint: if you're not developing code, don't define
+                                ULTRIX_PROTO. */
 
 #include "config1.h" /* should auto-detect MSDOS, MAC, AMIGA, and WIN32 */
 
-/* Windowing systems...
- * Define all of those you want supported in your binary.
- * Some combinations make no sense.  See the installation document.
- */
+                                /* Windowing systems...
+                                 * Define all of those you want supported in your binary.
+                                 * Some combinations make no sense.  See the installation document.
+                                 */
 #if !defined(NOTTYGRAPHICS)
 #define TTY_GRAPHICS /* good old tty based graphics */
 #endif
-/* #define X11_GRAPHICS */   /* X11 interface */
-/* #define QT_GRAPHICS */    /* Qt interface */
-/* #define GNOME_GRAPHICS */ /* Gnome interface */
-/* #define MSWIN_GRAPHICS */ /* Windows NT, CE, Graphics */
+                                 /* #define X11_GRAPHICS */   /* X11 interface */
+                                 /* #define QT_GRAPHICS */    /* Qt interface */
+                                 /* #define GNOME_GRAPHICS */ /* Gnome interface */
+                                 /* #define MSWIN_GRAPHICS */ /* Windows NT, CE, Graphics */
 
-/*
- * Define the default window system.  This should be one that is compiled
- * into your system (see defines above).  Known window systems are:
- *
- *      tty, X11, mac, amii, BeOS, Qt, Gem, Gnome
- */
+                                 /*
+                                  * Define the default window system.  This should be one that is compiled
+                                  * into your system (see defines above).  Known window systems are:
+                                  *
+                                  *      tty, X11, mac, amii, BeOS, Qt, Gem, Gnome
+                                  */
 
-/* MAC also means MAC windows */
+                                  /* MAC also means MAC windows */
 #ifdef MAC
 #ifndef AUX
 #define DEFAULT_WINDOW_SYS "mac"
@@ -125,7 +125,7 @@
  * would allow:
  *  xpmtoppm <x11tiles.xpm | pnmscale 1.25 | ppmquant 90 >x11tiles_big.xpm
  */
-/* # define USE_XPM */ /* Disable if you do not have the XPM library */
+ /* # define USE_XPM */ /* Disable if you do not have the XPM library */
 #ifdef USE_XPM
 #define GRAPHIC_TOMBSTONE /* Use graphical tombstone (rip.xpm) */
 #endif
@@ -199,20 +199,20 @@
 #define GREPPATH "/bin/grep"
 #endif
 
-/* note: "larger" is in comparison with 'record', the high-scores file
-   (whose name can be overridden via #define in global.h if desired) */
+ /* note: "larger" is in comparison with 'record', the high-scores file
+    (whose name can be overridden via #define in global.h if desired) */
 #define LOGFILE  "logfile"  /* larger file for debugging purposes */
 #define XLOGFILE "xlogfile" /* even larger logfile */
 #define NEWS     "news"     /* the file containing the latest hack news */
 #define PANICLOG "paniclog" /* log of panic and impossible events */
 
-/*
- *      PERSMAX, POINTSMIN, ENTRYMAX, PERS_IS_UID:
- *      These control the contents of 'record', the high-scores file.
- *      They used to be located in topten.c rather than config.h, and
- *      their values can be overridden at runtime (to increase ENTRYMAX, the
- *      maximum number of scores to keep, for example) if SYSCF is enabled.
- */
+    /*
+     *      PERSMAX, POINTSMIN, ENTRYMAX, PERS_IS_UID:
+     *      These control the contents of 'record', the high-scores file.
+     *      They used to be located in topten.c rather than config.h, and
+     *      their values can be overridden at runtime (to increase ENTRYMAX, the
+     *      maximum number of scores to keep, for example) if SYSCF is enabled.
+     */
 #ifndef PERSMAX
 #define PERSMAX 3 /* entries per name/uid per char. allowed */
 #endif
@@ -230,26 +230,26 @@
 #endif
 #endif
 
-/*
- *      If COMPRESS is defined, it should contain the full path name of your
- *      'compress' program.
- *
- *      If you define COMPRESS, you must also define COMPRESS_EXTENSION
- *      as the extension your compressor appends to filenames after
- *      compression. Currently, only UNIX fully implements
- *      COMPRESS; other ports should be able to uncompress save files a
- *      la unixmain.c if so inclined.
- *
- *      Defining ZLIB_COMP builds in support for zlib compression. If you
- *      define ZLIB_COMP, you must link with a zlib library. Not all ports
- *      support ZLIB_COMP.
- *
- *      COMPRESS and ZLIB_COMP are mutually exclusive.
- *
- */
+     /*
+      *      If COMPRESS is defined, it should contain the full path name of your
+      *      'compress' program.
+      *
+      *      If you define COMPRESS, you must also define COMPRESS_EXTENSION
+      *      as the extension your compressor appends to filenames after
+      *      compression. Currently, only UNIX fully implements
+      *      COMPRESS; other ports should be able to uncompress save files a
+      *      la unixmain.c if so inclined.
+      *
+      *      Defining ZLIB_COMP builds in support for zlib compression. If you
+      *      define ZLIB_COMP, you must link with a zlib library. Not all ports
+      *      support ZLIB_COMP.
+      *
+      *      COMPRESS and ZLIB_COMP are mutually exclusive.
+      *
+      */
 
 #if defined(UNIX) && !defined(ZLIB_COMP) && !defined(COMPRESS)
-/* path and file name extension for compression program */
+      /* path and file name extension for compression program */
 #define COMPRESS "/usr/bin/compress" /* Lempel-Ziv compression */
 #define COMPRESS_EXTENSION ".Z"      /* compress's extension */
 /* An example of one alternative you might want to use: */
@@ -289,22 +289,22 @@
  *      files at the cost of additional code and time.
  */
 
-/* # define INTERNAL_COMP */ /* defines both ZEROCOMP and RLECOMP */
-/* # define ZEROCOMP      */ /* Support ZEROCOMP compression */
-/* # define RLECOMP       */ /* Support RLECOMP compression  */
+ /* # define INTERNAL_COMP */ /* defines both ZEROCOMP and RLECOMP */
+ /* # define ZEROCOMP      */ /* Support ZEROCOMP compression */
+ /* # define RLECOMP       */ /* Support RLECOMP compression  */
 
-/*
- *      Data librarian.  Defining DLB places most of the support files into
- *      a tar-like file, thus making a neater installation.  See *conf.h
- *      for detailed configuration.
- */
-/* #define DLB */ /* not supported on all platforms */
+ /*
+  *      Data librarian.  Defining DLB places most of the support files into
+  *      a tar-like file, thus making a neater installation.  See *conf.h
+  *      for detailed configuration.
+  */
+  /* #define DLB */ /* not supported on all platforms */
 
-/*
- *      Defining INSURANCE slows down level changes, but allows games that
- *      died due to program or system crashes to be resumed from the point
- *      of the last level change, after running a utility program.
- */
+  /*
+   *      Defining INSURANCE slows down level changes, but allows games that
+   *      died due to program or system crashes to be resumed from the point
+   *      of the last level change, after running a utility program.
+   */
 #define INSURANCE /* allow crashed game recovery */
 
 #ifndef MAC
@@ -312,55 +312,55 @@
 #endif
 
 #ifdef CHDIR
-/*
- * If you define HACKDIR, then this will be the default playground;
- * otherwise it will be the current directory.
- */
+   /*
+    * If you define HACKDIR, then this will be the default playground;
+    * otherwise it will be the current directory.
+    */
 #ifndef HACKDIR
 #define HACKDIR "/usr/games/lib/nethackdir"
 #endif
 
-/*
- * Some system administrators are stupid enough to make Hack suid root
- * or suid daemon, where daemon has other powers besides that of reading or
- * writing Hack files.  In such cases one should be careful with chdir's
- * since the user might create files in a directory of his choice.
- * Of course SECURE is meaningful only if HACKDIR is defined.
- */
-/* #define SECURE */ /* do setuid(getuid()) after chdir() */
+    /*
+     * Some system administrators are stupid enough to make Hack suid root
+     * or suid daemon, where daemon has other powers besides that of reading or
+     * writing Hack files.  In such cases one should be careful with chdir's
+     * since the user might create files in a directory of his choice.
+     * Of course SECURE is meaningful only if HACKDIR is defined.
+     */
+     /* #define SECURE */ /* do setuid(getuid()) after chdir() */
 
-/*
- * If it is desirable to limit the number of people that can play Hack
- * simultaneously, define HACKDIR, SECURE and MAX_NR_OF_PLAYERS (or use
- * MAXPLAYERS under SYSCF).
- * #define MAX_NR_OF_PLAYERS 6
- */
+     /*
+      * If it is desirable to limit the number of people that can play Hack
+      * simultaneously, define HACKDIR, SECURE and MAX_NR_OF_PLAYERS (or use
+      * MAXPLAYERS under SYSCF).
+      * #define MAX_NR_OF_PLAYERS 6
+      */
 #endif /* CHDIR */
 
-/* If GENERIC_USERNAMES is defined, and the player's username is found
- * in the list, prompt for character name instead of using username.
- * A public server should probably disable this. */
+      /* If GENERIC_USERNAMES is defined, and the player's username is found
+       * in the list, prompt for character name instead of using username.
+       * A public server should probably disable this. */
 #define GENERIC_USERNAMES "play player game games nethack nethacker"
 
-/*
- * Section 3:   Definitions that may vary with system type.
- *              For example, both schar and uchar should be short ints on
- *              the AT&T 3B2/3B5/etc. family.
- */
+       /*
+        * Section 3:   Definitions that may vary with system type.
+        *              For example, both schar and uchar should be short ints on
+        *              the AT&T 3B2/3B5/etc. family.
+        */
 
-/*
- * Uncomment the following line if your compiler doesn't understand the
- * 'void' type (and thus would give all sorts of compile errors without
- * this definition).
- */
-/* #define NOVOID */ /* define if no "void" data type. */
+        /*
+         * Uncomment the following line if your compiler doesn't understand the
+         * 'void' type (and thus would give all sorts of compile errors without
+         * this definition).
+         */
+         /* #define NOVOID */ /* define if no "void" data type. */
 
-/*
- * Uncomment the following line if your compiler falsely claims to be
- * a standard C compiler (i.e., defines __STDC__ without cause).
- * Examples are Apollo's cc (in some versions) and possibly SCO UNIX's rcc.
- */
-/* #define NOTSTDC */ /* define for lying compilers */
+         /*
+          * Uncomment the following line if your compiler falsely claims to be
+          * a standard C compiler (i.e., defines __STDC__ without cause).
+          * Examples are Apollo's cc (in some versions) and possibly SCO UNIX's rcc.
+          */
+          /* #define NOTSTDC */ /* define for lying compilers */
 
 #include "tradstdc.h"
 
@@ -397,22 +397,22 @@ typedef unsigned char uchar;
  */
 #define BITFIELDS /* Good bitfield handling */
 
-/* #define STRNCMPI */ /* compiler/library has the strncmpi function */
+ /* #define STRNCMPI */ /* compiler/library has the strncmpi function */
 
-/*
- * There are various choices for the NetHack vision system.  There is a
- * choice of two algorithms with the same behavior.  Defining VISION_TABLES
- * creates huge (60K) tables at compile time, drastically increasing data
- * size, but runs slightly faster than the alternate algorithm.  (MSDOS in
- * particular cannot tolerate the increase in data size; other systems can
- * flip a coin weighted to local conditions.)
- *
- * If VISION_TABLES is not defined, things will be faster if you can use
- * MACRO_CPATH.  Some cpps, however, cannot deal with the size of the
- * functions that have been macroized.
- */
+ /*
+  * There are various choices for the NetHack vision system.  There is a
+  * choice of two algorithms with the same behavior.  Defining VISION_TABLES
+  * creates huge (60K) tables at compile time, drastically increasing data
+  * size, but runs slightly faster than the alternate algorithm.  (MSDOS in
+  * particular cannot tolerate the increase in data size; other systems can
+  * flip a coin weighted to local conditions.)
+  *
+  * If VISION_TABLES is not defined, things will be faster if you can use
+  * MACRO_CPATH.  Some cpps, however, cannot deal with the size of the
+  * functions that have been macroized.
+  */
 
-/* #define VISION_TABLES */ /* use vision tables generated at compile time */
+  /* #define VISION_TABLES */ /* use vision tables generated at compile time */
 #ifndef VISION_TABLES
 #ifndef NO_MACRO_CPATH
 #define MACRO_CPATH /* use clear_path macros instead of functions */
@@ -435,25 +435,25 @@ typedef unsigned char uchar;
  * bugs left here.
  */
 
-/* #define STATUS_VIA_WINDOWPORT */ /* re-work of the status line
-                                       updating process */
-/* #define STATUS_COLORS */         /* color status fields with custom rules */
+#define STATUS_VIA_WINDOWPORT /* re-work of the status line
+                                     updating process */
+#define STATUS_COLORS        /* color status fields with custom rules */
 
-/* #define WINCHAIN */              /* stacked window systems */
+                                     /* #define WINCHAIN */              /* stacked window systems */
 
-/* #define DEBUG_MIGRATING_MONS */  /* add a wizard-mode command to help debug
-                                       migrating monsters */
+                                     /* #define DEBUG_MIGRATING_MONS */  /* add a wizard-mode command to help debug
+                                                                            migrating monsters */
 
-/* SCORE_ON_BOTL is neither experimental nor inadequately tested,
-   but doesn't seem to fit in any other section... */
-/* #define SCORE_ON_BOTL */         /* enable the 'showscore' option to
-                                       show estimated score on status line */
+                                                                            /* SCORE_ON_BOTL is neither experimental nor inadequately tested,
+                                                                               but doesn't seem to fit in any other section... */
+                                                                               /* #define SCORE_ON_BOTL */         /* enable the 'showscore' option to
+                                                                                                                      show estimated score on status line */
 
-/* FREE_ALL_MEMORY is neither experimental nor inadequately tested,
-   but it isn't necessary for successful operation of the program */
+                                                                                                                      /* FREE_ALL_MEMORY is neither experimental nor inadequately tested,
+                                                                                                                         but it isn't necessary for successful operation of the program */
 #define FREE_ALL_MEMORY             /* free all memory at exit */
 
-/* End of Section 4 */
+                                                                                                                         /* End of Section 4 */
 
 #include "global.h" /* Define everything else according to choices above */
 
